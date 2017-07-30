@@ -1,2 +1,2 @@
 # WeatherForecast
-Uses open weather API 
+Search your favorite places weather using open weather API
