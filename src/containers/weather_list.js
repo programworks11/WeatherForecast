@@ -8,25 +8,28 @@ class WeatherList extends Component
     renderWeather(cityData)
     {
         //console.log("cityData");
-        const temps = cityData.list.map(weather => weather.main.temp);
-        const pressure = cityData.list.map(weather => weather.main.pressure);
-        const humidities = cityData.list.map(weather => weather.main.humidity);
-        const {lon, lat} = cityData.city.coord;
-        console.log("lon", "lat", lon, lat);
-        return (<tr key={cityData.city.name}>
-                  <td>
-                      <GoogleMap lon={lon} lat={lat} />
-                  </td>
-                  <td>
-                      <Chart data={temps} color="orange" />
-                  </td>
-                  <td>
-                      <Chart data={pressure} color="red" />
-                  </td>
-                  <td>
-                      <Chart data={humidities} color="blue" />
-                  </td>
-                </tr>);
+        if(cityData)
+        {
+            const temps = cityData.list.map(weather => weather.main.temp);
+            const pressure = cityData.list.map(weather => weather.main.pressure);
+            const humidities = cityData.list.map(weather => weather.main.humidity);
+            const {lon, lat} = cityData.city.coord;
+            console.log("lon", "lat", lon, lat);
+            return (<tr key={cityData.city.name}>
+                      <td>
+                          <GoogleMap lon={lon} lat={lat} />
+                      </td>
+                      <td>
+                          <Chart data={temps} color="orange" />
+                      </td>
+                      <td>
+                          <Chart data={pressure} color="red" />
+                      </td>
+                      <td>
+                          <Chart data={humidities} color="blue" />
+                      </td>
+                    </tr>);
+        }
     }
     render()
     {
